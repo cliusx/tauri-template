@@ -17,6 +17,7 @@ import { logger } from '@/lib/logger'
 // Language display names (native names)
 const languageNames: Record<string, string> = {
   en: 'English',
+  zh: '简体中文',
   fr: 'Français',
   ar: 'العربية',
 }
@@ -87,11 +88,13 @@ export function AppearancePane() {
               <SelectItem value="system">
                 {t('preferences.appearance.language.system')}
               </SelectItem>
-              {availableLanguages.map(lang => (
-                <SelectItem key={lang} value={lang}>
-                  {languageNames[lang] ?? lang}
-                </SelectItem>
-              ))}
+              {availableLanguages
+                .filter(lang => lang === 'en' || lang === 'zh')
+                .map(lang => (
+                  <SelectItem key={lang} value={lang}>
+                    {languageNames[lang] ?? lang}
+                  </SelectItem>
+                ))}
             </SelectContent>
           </Select>
         </SettingsField>

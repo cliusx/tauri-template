@@ -1,11 +1,13 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import en from '../../locales/en.json'
+import zh from '../../locales/zh.json'
 import ar from '../../locales/ar.json'
 import fr from '../../locales/fr.json'
 
 const resources = {
   en: { translation: en },
+  zh: { translation: zh },
   ar: { translation: ar },
   fr: { translation: fr },
 }
@@ -15,8 +17,8 @@ const rtlLanguages = ['ar', 'he', 'fa', 'ur']
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'en',
-  fallbackLng: 'en',
+  lng: 'zh',
+  fallbackLng: 'zh',
   interpolation: {
     escapeValue: false, // React already escapes
   },

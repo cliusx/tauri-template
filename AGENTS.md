@@ -89,6 +89,8 @@ const prefs = await invoke('load_preferences')
 
 ### Internationalization (i18n)
 
+**CRITICAL:** This project supports **Chinese (zh)** and **English (en)** only. All user-facing strings MUST be added to both `/locales/zh.json` and `/locales/en.json`.
+
 ```typescript
 // ✅ GOOD: Use useTranslation hook in React components
 import { useTranslation } from 'react-i18next'
@@ -104,6 +106,7 @@ const t = i18n.t.bind(i18n)  // Bind once for many translations
 i18n.t('key')                 // Or call directly for occasional use
 ```
 
+- **Supported Languages**: Chinese (zh) and English (en) - add strings to BOTH locale files
 - **Translations**: All strings in `/locales/*.json`
 - **RTL Support**: Use CSS logical properties (`text-start` not `text-left`)
 - **Adding strings**: See `docs/developer/i18n-patterns.md`
