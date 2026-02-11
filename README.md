@@ -1,101 +1,101 @@
-# Tauri React Template
+# Tauri React 模板
 
-A "batteries-included" template for building production-ready desktop applications with **Tauri v2**, **React**, and **TypeScript**. Designed with opinionated patterns that help both human developers and AI coding agents build well-architected apps from the start.
+一个"开箱即用"的模板，用于构建生产就绪的桌面应用程序，基于 **Tauri v2**、**React** 和 **TypeScript**。采用固定的架构模式设计，帮助开发者和 AI 编码助手从一开始就构建架构良好的应用。
 
-## Why This Template?
+## 为什么选择这个模板？
 
-Most Tauri starters give you a blank canvas. This template gives you a **working application** with patterns already established:
+大多数 Tauri 启动模板只给你一个空白画布。这个模板为你提供了一个**可运行的应用程序**，并已建立了完善的模式：
 
-- **Type-safe Rust-TypeScript bridge** via tauri-specta.
-- **Performance patterns enforced by tooling** - all the usual linting plus ast-grep for common anti-patterns
-- **Multi-window architecture** already working (quick pane with global shortcut as a demo)
-- **Cross-platform ready** with platform-specific title bars, window controls, and native menu integration
-- **i18n built-in** with RTL support
+- **类型安全的 Rust-TypeScript 桥接**，通过 tauri-specta 实现
+- **工具强制执行的性能模式** - 包含常规 linting 以及 ast-grep 检测常见反模式
+- **多窗口架构**已经可用（带全局快捷键的快速面板作为演示）
+- **跨平台就绪**，包含平台特定的标题栏、窗口控件和原生菜单集成
+- **内置国际化**，支持 RTL（从右到左）布局
 
-## Stack
+## 技术栈
 
-| Layer    | Technologies                                    |
+| 层级     | 技术                                            |
 | -------- | ----------------------------------------------- |
-| Frontend | React 19, TypeScript, Vite 7                    |
+| 前端     | React 19, TypeScript, Vite 7                    |
 | UI       | shadcn/ui v4, Tailwind CSS v4, Lucide React     |
-| State    | Zustand v5, TanStack Query v5                   |
-| Backend  | Tauri v2, Rust                                  |
-| Testing  | Vitest v4, Testing Library                      |
-| Quality  | ESLint, Prettier, ast-grep, knip, jscpd, clippy |
+| 状态管理 | Zustand v5, TanStack Query v5                   |
+| 后端     | Tauri v2, Rust                                  |
+| 测试     | Vitest v4, Testing Library                      |
+| 质量保证 | ESLint, Prettier, ast-grep, knip, jscpd, clippy |
 
-## What's Already Built
+## 已实现的功能
 
-The template includes a working application with these features implemented:
+该模板包含一个可运行的应用程序，已实现以下功能：
 
-### Core Features
+### 核心功能
 
-- **Command Palette** (`Cmd+K`) - Searchable command launcher with keyboard navigation
-- **Quick Pane** - Global shortcut (`Cmd+Shift+.`) opens a floating window from any app, even fullscreen. Uses native NSPanel on macOS for proper fullscreen overlay behavior.
-- **Keyboard Shortcuts** - Platform-aware shortcuts with automatic menu integration
-- **Native Menus** - File, Edit, View menus built from JavaScript with full i18n support
-- **Preferences System** - Settings dialog with Rust-side persistence, React hooks, and type-safe access throughout
-- **Collapsible Sidebars** - Empty left and right sidebars with state persistence via resizable panels
-- **Theme System** - Light/dark mode with system preference detection, synced across windows
-- **Notifications** - Toast notifications for in-app feedback, plus native system notifications
-- **Auto-updates** - Tauri updater plugin configured with GitHub Releases integration and update checking on launch
-- **Logging** - Structured logging utilities for both Rust and TypeScript with consistent formatting
-- **Crash Recovery** - Emergency data persistence for recovering unsaved work after unexpected exits
+- **命令面板** (`Cmd+K`) - 可搜索的命令启动器，支持键盘导航
+- **快速面板** - 全局快捷键 (`Cmd+Shift+.`) 可从任何应用打开浮动窗口，即使在全屏模式下也可以。在 macOS 上使用原生 NSPanel 实现正确的全屏覆盖行为。
+- **键盘快捷键** - 平台感知的快捷键，自动集成到菜单
+- **原生菜单** - 从 JavaScript 构建的文件、编辑、查看菜单，完全支持国际化
+- **偏好设置系统** - 设置对话框，Rust 端持久化，React hooks，以及全局类型安全访问
+- **可折叠侧边栏** - 空的左右侧边栏，通过可调整大小的面板实现状态持久化
+- **主题系统** - 明暗模式，支持系统偏好检测，跨窗口同步
+- **通知** - 应用内反馈的 Toast 通知，以及原生系统通知
+- **自动更新** - 配置了 Tauri 更新插件，集成 GitHub Releases，启动时检查更新
+- **日志记录** - Rust 和 TypeScript 的结构化日志工具，格式一致
+- **崩溃恢复** - 紧急数据持久化，用于在意外退出后恢复未保存的工作
 
-### Architecture Patterns
+### 架构模式
 
-- **Three-layer state management** - Clear decision tree: `useState` (component) → `Zustand` (global UI) → `TanStack Query` (persistent data "not owned by the app)
-- **Event-driven Rust-React bridge** - Menus, shortcuts, and command palette all route through the same command system
-- **React Compiler** - Automatic memoization means no manual `useMemo`/`useCallback` needed
+- **三层状态管理** - 清晰的决策树：`useState`（组件）→ `Zustand`（全局 UI）→ `TanStack Query`（应用不拥有的持久化数据）
+- **事件驱动的 Rust-React 桥接** - 菜单、快捷键和命令面板都通过同一个命令系统路由
+- **React Compiler** - 自动记忆化，无需手动使用 `useMemo`/`useCallback`
 
-### Cross-Platform
+### 跨平台
 
-| Platform | Title Bar            | Window Controls | Bundle Format |
-| -------- | -------------------- | --------------- | ------------- |
-| macOS    | Custom with vibrancy | Traffic lights  | `.dmg`        |
-| Windows  | Custom               | Right side      | `.msi`        |
-| Linux    | Native + toolbar     | Native          | `.AppImage`   |
+| 平台    | 标题栏               | 窗口控件 | 打包格式      |
+| ------- | -------------------- | -------- | ------------- |
+| macOS   | 自定义，带毛玻璃效果 | 交通灯   | `.dmg`        |
+| Windows | 自定义               | 右侧     | `.msi`        |
+| Linux   | 原生 + 工具栏        | 原生     | `.AppImage`   |
 
-Platform detection utilities, platform-specific UI strings ("Reveal in Finder" vs "Show in Explorer"), and separate Tauri configs per platform are all set up.
+平台检测工具、平台特定的 UI 字符串（"在访达中显示" vs "在资源管理器中显示"）以及每个平台的独立 Tauri 配置都已设置完成。
 
-### Developer Experience
+### 开发体验
 
-- **Type-safe Tauri commands** - tauri-specta generates TypeScript bindings from Rust, with full autocomplete and compile-time checking
-- **Static analysis** - ESLint, Prettier, ast-grep (architecture enforcement), knip (unused code), jscpd (duplication)
-- **Single quality gate** - `npm run check:all` runs TypeScript, ESLint, Prettier, ast-grep, clippy, and all tests
-- **Testing patterns** - Vitest setup with Tauri command mocking
+- **类型安全的 Tauri 命令** - tauri-specta 从 Rust 生成 TypeScript 绑定，完全支持自动补全和编译时检查
+- **静态分析** - ESLint、Prettier、ast-grep（架构强制）、knip（未使用代码）、jscpd（重复代码）
+- **单一质量门** - `npm run check:all` 运行 TypeScript、ESLint、Prettier、ast-grep、clippy 和所有测试
+- **测试模式** - Vitest 设置，支持 Tauri 命令模拟
 
-## Tauri Plugins Included
+## 包含的 Tauri 插件
 
-| Plugin            | Purpose                          |
-| ----------------- | -------------------------------- |
-| single-instance   | Prevent multiple app instances   |
-| window-state      | Remember window position/size    |
-| fs                | File system access               |
-| dialog            | Native open/save dialogs         |
-| notification      | System notifications             |
-| clipboard-manager | Clipboard access                 |
-| global-shortcut   | System-wide keyboard shortcuts   |
-| updater           | In-app auto-updates              |
-| opener            | Open URLs/files with default app |
-| tauri-nspanel     | macOS floating panel behavior    |
+| 插件              | 用途                       |
+| ----------------- | -------------------------- |
+| single-instance   | 防止多个应用实例           |
+| window-state      | 记住窗口位置/大小          |
+| fs                | 文件系统访问               |
+| dialog            | 原生打开/保存对话框        |
+| notification      | 系统通知                   |
+| clipboard-manager | 剪贴板访问                 |
+| global-shortcut   | 系统级键盘快捷键           |
+| updater           | 应用内自动更新             |
+| opener            | 使用默认应用打开 URL/文件  |
+| tauri-nspanel     | macOS 浮动面板行为         |
 
-## AI-Ready Development
+## AI 友好的开发
 
-This template is designed to work well with AI coding agents like Claude Code:
+该模板设计为与 AI 编码助手（如 Claude Code）良好配合：
 
-- **Comprehensive documentation** in `docs/developer/` covering all patterns. Human readable but really designed to explain the "why" of certain patterns to AI agents. Not slop.
-- **Claude Code integration** - Custom commands (`/check`, `/cleanup`) and a couple of specialized agents
-- **Sensible file organization** - React code in `src/` with clear separation (components, hooks, stores, services), Rust in `src-tauri/src/` with modular command organization. Predictable structure for both humans and AI.
+- **全面的文档**，位于 `docs/developer/`，涵盖所有模式。人类可读，但实际上是为了向 AI 助手解释某些模式的"原因"而设计的。不是废话。
+- **Claude Code 集成** - 自定义命令（`/check`、`/cleanup`）和几个专门的助手
+- **合理的文件组织** - React 代码在 `src/` 中，清晰分离（组件、hooks、stores、services），Rust 在 `src-tauri/src/` 中，模块化的命令组织。对人类和 AI 都是可预测的结构。
 
-## Getting Started
+## 开始使用
 
-See **[Using This Template](docs/USING_THIS_TEMPLATE.md)** for setup instructions and workflow guidance.
+查看 **[使用此模板](docs/USING_THIS_TEMPLATE.md)** 获取设置说明和工作流程指导。
 
-### Quick Start
+### 快速开始
 
 ```bash
-# Prerequisites: Node.js 18+, Rust (latest stable)
-# See https://tauri.app/start/prerequisites/ for platform-specific deps
+# 前置要求：Node.js 18+, Rust（最新稳定版）
+# 查看 https://tauri.app/start/prerequisites/ 了解平台特定依赖
 
 git clone <your-repo>
 cd your-app
@@ -103,16 +103,16 @@ npm install
 npm run dev
 ```
 
-## Documentation
+## 文档
 
-- **[Developer Docs](docs/developer/)** - Architecture, patterns, and detailed guides
-- **[User Guide](docs/userguide/)** - End-user documentation template
-- **[Using This Template](docs/USING_THIS_TEMPLATE.md)** - Setup and workflow guide
+- **[开发者文档](docs/developer/)** - 架构、模式和详细指南
+- **[用户指南](docs/userguide/)** - 最终用户文档模板
+- **[使用此模板](docs/USING_THIS_TEMPLATE.md)** - 设置和工作流程指南
 
-## License
+## 许可证
 
 [MIT](LICENSE.md)
 
 ---
 
-Built with [Tauri](https://tauri.app) | [shadcn/ui](https://ui.shadcn.com) | [React](https://react.dev)
+使用 [Tauri](https://tauri.app) | [shadcn/ui](https://ui.shadcn.com) | [React](https://react.dev) 构建
